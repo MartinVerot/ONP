@@ -1,27 +1,28 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
 
+"""
+Program counting the number of times that a given DNA base pair appears in a given sequence.
+"""
 
+# Importation des librairies
 
-
-def count_base_dna(dna, base):
-    """
-    Counts the number of occurence of `base` (str) in `dna` (str)
-    """
-    i = 0  # counter
-    for char in dna:
-        if char == base:
+# Definition des fonctions
+def f(a, b):
+    i = 0
+    for c in a:
+        if c == b:
             i += 1
     return i
 
 
-dna = "ATGCGGACCTAT"
-base = "C"
-n = count_base_dna(dna, base)
-# or (new) format string syntax
-print("{base} appears {n} times in {dna}".format(base=base, n=n, dna=dna))
-
-
-
-
+# Programme principal
+if __name__ == "__main__":
+    d = "ATGCGGACCTAT"
+    b = "C"
+    e = f(d, b)
+    # printf-style formatting
+    print("{} appears {} times in {}".format(b, e, d))
 
 
 
@@ -31,65 +32,32 @@ print("{base} appears {n} times in {dna}".format(base=base, n=n, dna=dna))
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-"""
-Voici un exemple de code qui prend la valeur du signal Is mesuré pour une gamme étalon
-dont les concentrations initiales Cs sont connues. Ensuite, on calcule l'absorbance définie comme :
-$$A = - \log\left(\dfrac{I}{I_0}\right) $$ où I0 est l'absorbance du blanc.
-
-Ayant deux points, on extrait ensuite la droite affine passant par ces deux points
-pour avoir la réponse du détecteur.
-"""
-
 import numpy as np
 
 
 def calc_absorbance(I, I0):
-    """
-    Calcul de l'absorbance
-    - I est l'intensité lumineuse en sortie de l'échantillon (float)
-    - I0 est l'intensité lumineuse pour le blanc (float)
-    retourne l'absorbance (float)
-    """
     return -np.log(I / I0)
 
 
 def calc_droite(Abs, Cs):
-    """
-    Calcul de la pente et l'ordonnée à l'origine à partir de deux points
-    - Abs : liste des absorbances de longueur 2
-    - Cs : liste des concentrations de longueur 2
-    retourne la pente et l'ordonnée à l'origine (tuple)
-    """
     a = (Abs[1] - Abs[0]) / (Cs[1] - Cs[0])
     b = Abs[1] - a * Cs[1]
-    return a, b  # slope, intercept
+    return a, b
 
 
 if __name__ == "__main__":
-    # Intensité lumineuse pour le blanc
-    I0 = 986
-    # Intensités brutes en sortie du détecteur
     Is = [611, 281]
-    # Liste qui contiendra les absorbances
     Abs = []
-    # Valeurs des concentrations exprimée en mmol/L
     Cs = [2, 4]
-
-    # Calcul de l'absorbance
+    I0 = 986
     for I in Is:
         Abs.append(calc_absorbance(I, I0))
-
-    # Calcul des paramètres de la droite affine
     droite = calc_droite(Abs, Cs)
-
     print("pente : {}, ordonnée à l'origine : {}".format(*droite))
 
 
-
 **********************************************************
 **********************************************************
-
-
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
@@ -103,11 +71,7 @@ Le but est ici d'avoir à la suite un signal sinusoïdal suivi d'un signal trian
 Le signal final doit être continu (excepté aux discontinuités du signal carré).
 """
 
-#### Bad mauvais import de l'alias, du coup les fonctions dans le namespace numpy ne fonctionnent pas
-#### en général lié à un mauvais copier coller depuis internet
-# $$# import numpy
-#### Good
-import numpy as np  # ££$
+import numpy
 
 
 # import de librairie pour avoir un aperçu du résultat,
@@ -115,8 +79,8 @@ import numpy as np  # ££$
 import matplotlib as mpl
 import matplotlib.pyplot as plt
 
-# $$# def make_sinusoid(amplitude, period=1, steps=100):
-def make_sinusoid(amplitude, period=1, steps=100, ts=None, ys=None):  # ££$
+
+def make_sinusoid(amplitude, period=1, steps=100):
     """
     crée un signal sinusoïdal, retourne deux listes :
     - une liste avec les abscisses temporelles,
@@ -131,40 +95,20 @@ def make_sinusoid(amplitude, period=1, steps=100, ts=None, ys=None):  # ££$
     - ts (list) :  liste à laquelle on va ajouter le signal
     """
 
-    #### GOOD : initialisation d'objet mutables au sein de la fonction pour des arguments optionnels
-    if ts is None:  # ££$
-        ts = []  # ££$
-    if ys is None:  # ££$
-        ys = []  # ££$
-
-    #### Bad en trop => conflit de nom de variable dans deux namespaces différents
-    #### en déclarant ts ici, on créé une variable interne à la fonction, ce qui fait
-    #### que le extend va porter sur la variable interne à la fonction et pas la variable globale
-    # $$# ts = list(np.linspace(0,period,steps))
+    ts = list(np.linspace(0, period, steps))
 
     # création de l'ensemble des abscisses temporelles
     # la fonction linspace va créer steps points régulièrement espacés entre 0 et period
     tss = np.linspace(0, period, steps)
 
     # Calcul de l'amplitude pour chacun des pas de temps
-    #### Good
-    amplitudes = amplitude * np.sin(tss * 2 * np.pi / period)  # ££$
-    #### Bad : oubli de la pulsation
-    # $$# amplitudes = amplitude * np.sin(tss)
-
-    #### Good : fait le shift
-    if len(ts) > 0:  # ££$
-        tss += max(ts)  # ££$
+    amplitudes = amplitude * np.sin(tss)
 
     ts.extend(list(tss))
     ys.extend(list(amplitudes))
 
-    #### Bad : pas de valeur retour de la fonction
-    return tss, amplitudes  # ££$
 
-
-# $$# def make_triangle(amplitude, period=1, steps=100):
-def make_triangle(amplitude, period=1, steps=100, ts=None, ys=None):  # ££$
+def make_triangle(amplitude, period=1, steps=100):
     """
     crée un signal triangulaire, retourne deux listes :
     - une liste avec les abscisses temporelles,
@@ -179,11 +123,6 @@ def make_triangle(amplitude, period=1, steps=100, ts=None, ys=None):  # ££$
     - ts (list) :  liste à laquelle on va ajouter le signal
     """
 
-    if ts is None:  # ££$
-        ts = []  # ££$
-    if ys is None:  # ££$
-        ys = []  # ££$
-
     # calcul de la pente associée au signal qui sera l'incrément entre deux pas de temps
     slope = 4 * amplitude / steps
 
@@ -194,9 +133,7 @@ def make_triangle(amplitude, period=1, steps=100, ts=None, ys=None):  # ££$
     amplitudes = []
 
     # indice correspondant au pas de temps
-    current_step = 1  # ££$
-    # $$# current_step = 0
-    amplitudes.append(0)  # ££$
+    current_step = 0
     current_amplitude = 0
     """
     on fait un signal triangulaire découpé en 4 morceaux :
@@ -214,21 +151,12 @@ def make_triangle(amplitude, period=1, steps=100, ts=None, ys=None):  # ££$
         else:
             current_amplitude += slope
             amplitudes.append(current_amplitude)
-        #### BAD :  non bouclage d'un while => boucle infinie
-        current_step += 1  # ££$
-    # $$# current_step += 1
-    if len(ts) > 0:  # ££$
-        tss += max(ts)  # ££$
-
+    current_step += 1
     ts.extend(tss)
     ys.extend(list(amplitudes))
 
-    #### Bad : pas de valeur retour de la fonction
-    return tss, amplitudes  # ££$
 
-
-# $$# def make_square(amplitude, period=1, steps=100):
-def make_square(amplitude, period=1, steps=100, ts=None, ys=None):  # ££$
+def make_square(amplitude, period=1, steps=100):
     """
     crée un signal rectangulaire, retourne deux listes :
     - une liste avec les abscisses temporelles,
@@ -242,11 +170,6 @@ def make_square(amplitude, period=1, steps=100, ts=None, ys=None):  # ££$
     - steps (int) : nombre de pas pour l'échantillonage de la fonction
     - ts (list) :  liste à laquelle on va ajouter le signal
     """
-    #### GOOD : initialisation d'objet mutables au sein de la fonction pour des arguments optionnels
-    if ts is None:  # ££$
-        ts = []  # ££$
-    if ys is None:  # ££$
-        ys = []  # ££$
     # création de l'ensemble des abscisses temporelles
     tss = np.linspace(0, period, steps)
     amplitudes = []
@@ -255,13 +178,9 @@ def make_square(amplitude, period=1, steps=100, ts=None, ys=None):  # ££$
             amplitudes.append(amplitude)
         else:
             amplitudes.append(-amplitude)
-    if len(ts) > 0:  # ££$
-        tss += max(ts)  # ££$
 
     ts.extend(list(tss))
     ys.extend(list(amplitudes))
-
-    return tss, amplitudes  # ££$
 
 
 if __name__ == "__main__":
@@ -269,12 +188,9 @@ if __name__ == "__main__":
     ys = []
     pas = 100
 
-    tss, amplitudes = make_sinusoid(4, 8, pas, ts=ts, ys=ys)  # ££$
-    # $$# make_sinusoid(4, 8,pas)
-    tss, amplitudes = make_triangle(4, 8, pas, ts=ts, ys=ys)  # ££$
-    # $$# make_triangle(4, 8,pas)
-    tss, amplitudes = make_square(4, 8, pas, ts=ts, ys=ys)  # ££$
-    # $$# make_square(4, 8,pas)
+    make_sinusoid(4, 8, pas)
+    make_triangle(4, 8, pas)
+    make_square(4, 8, pas)
 
     # Affichage du signal final, pas de bug dans les deux lignes ci-dessous
     plt.plot(ts, ys)
