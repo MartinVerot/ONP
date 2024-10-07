@@ -26,8 +26,8 @@
      inkscape:document-units="pt"
      showgrid="false"
      inkscape:zoom="0.84639188"
-     inkscape:cx="854.80499"
-     inkscape:cy="350.90129"
+     inkscape:cx="665.76726"
+     inkscape:cy="339.08643"
      inkscape:window-width="1920"
      inkscape:window-height="1171"
      inkscape:window-x="0"
@@ -1979,4 +1979,48 @@
      style="fill:none;stroke:#000000;stroke-width:0.75;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:0.75,3;stroke-dashoffset:0"
      d="M 587.99394,335.16906 H 972"
      id="path24654" />
+  <text
+     xml:space="preserve"
+     style="font-size:24px;line-height:1.25;font-family:'URW Palladio ITU';-inkscape-font-specification:'URW Palladio ITU';letter-spacing:0px;stroke-width:0.75"
+     x="771.15552"
+     y="555.53613"
+     id="text26838"><tspan
+       sodipodi:role="line"
+       id="tspan26836"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:24px;font-family:P052;-inkscape-font-specification:P052;stroke-width:0.75"
+       x="771.15552"
+       y="555.53613">V</tspan></text>
+  <text
+     xml:space="preserve"
+     style="font-size:24px;line-height:1.25;font-family:'URW Palladio ITU';-inkscape-font-specification:'URW Palladio ITU';letter-spacing:0px;stroke-width:0.75;stroke-linecap:butt;stroke-linejoin:round"
+     x="303.10645"
+     y="557.27704"
+     id="text26838-6"><tspan
+       sodipodi:role="line"
+       id="tspan26836-3"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:24px;font-family:P052;-inkscape-font-specification:P052;stroke-width:0.75"
+       x="303.10645"
+       y="557.27704">V</tspan></text>
+  <text
+     xml:space="preserve"
+     style="font-size:24px;line-height:1.25;font-family:'URW Palladio ITU';-inkscape-font-specification:'URW Palladio ITU';letter-spacing:0px;stroke-width:0.75;stroke-linecap:butt;stroke-linejoin:round"
+     x="128.81667"
+     y="57.87257"
+     id="text26838-6-9"><tspan
+       sodipodi:role="line"
+       id="tspan26836-3-4"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:24px;font-family:P052;-inkscape-font-specification:P052;stroke-width:0.75"
+       x="128.81667"
+       y="57.87257">P</tspan></text>
+  <text
+     xml:space="preserve"
+     style="font-size:24px;line-height:1.25;font-family:'URW Palladio ITU';-inkscape-font-specification:'URW Palladio ITU';letter-spacing:0px;stroke-width:0.75;stroke-linecap:butt;stroke-linejoin:round"
+     x="584.27765"
+     y="59.259789"
+     id="text26838-6-9-8"><tspan
+       sodipodi:role="line"
+       id="tspan26836-3-4-1"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:24px;font-family:P052;-inkscape-font-specification:P052;stroke-width:0.75"
+       x="584.27765"
+       y="59.259789">P</tspan></text>
 </svg>
