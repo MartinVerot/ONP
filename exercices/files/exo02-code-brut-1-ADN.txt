@@ -1,0 +1,28 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+
+"""
+Program counting the number of times that a given DNA base pair appears in a given sequence.
+"""
+
+# Importation des librairies
+
+# Definition des fonctions
+def f(a, b):
+    i = 0
+    for c in a:
+        if c == b:
+            i += 1
+    return i
+
+
+# Programme principal
+if __name__ == "__main__":
+    d = "ATGCGGACCTAT"
+    b = "C"
+    e = f(d, b)
+    # printf-style formatting
+    print("{} appears {} times in {}".format(b, e, d))
+
+
+

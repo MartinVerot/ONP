@@ -2,66 +2,6 @@
 # -*- coding: utf-8 -*-
 
 """
-Program counting the number of times that a given DNA base pair appears in a given sequence.
-"""
-
-# Importation des librairies
-
-# Definition des fonctions
-def f(a, b):
-    i = 0
-    for c in a:
-        if c == b:
-            i += 1
-    return i
-
-
-# Programme principal
-if __name__ == "__main__":
-    d = "ATGCGGACCTAT"
-    b = "C"
-    e = f(d, b)
-    # printf-style formatting
-    print("{} appears {} times in {}".format(b, e, d))
-
-
-
-**********************************************************
-**********************************************************
-
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-
-import numpy as np
-
-
-def calc_absorbance(I, I0):
-    return -np.log(I / I0)
-
-
-def calc_droite(Abs, Cs):
-    a = (Abs[1] - Abs[0]) / (Cs[1] - Cs[0])
-    b = Abs[1] - a * Cs[1]
-    return a, b
-
-
-if __name__ == "__main__":
-    Is = [611, 281]
-    Abs = []
-    Cs = [2, 4]
-    I0 = 986
-    for I in Is:
-        Abs.append(calc_absorbance(I, I0))
-    droite = calc_droite(Abs, Cs)
-    print("pente : {}, ordonnée à l'origine : {}".format(*droite))
-
-
-**********************************************************
-**********************************************************
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-
-"""
 Création de signaux périodiques
 
 On crée un signal périodique, celui-ci sera ajouté à la suite des listes
